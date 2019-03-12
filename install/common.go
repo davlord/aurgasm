@@ -1,9 +1,10 @@
 package install
 
-import(
+import (
 	"os"
 	"os/exec"
-	"davlord.com/aurgasm/common"
+
+	"github.com/davlord/aurgasm/common"
 )
 
 func buildInfoURL(packageName string) string {
@@ -15,11 +16,11 @@ func aurAPIInfoPackage(packageName string, searchResult *common.SearchResult) er
 	return common.GetJson(url, searchResult)
 }
 
-func runCommand(dir string, cmdName string, cmdArgs ...string) (error) {
+func runCommand(dir string, cmdName string, cmdArgs ...string) error {
 	cmd := exec.Command(cmdName, cmdArgs...)
 	cmd.Dir = dir
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	return cmd.Run()	
+	return cmd.Run()
 }

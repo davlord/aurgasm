@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"davlord.com/aurgasm/common"
+	"github.com/davlord/aurgasm/common"
 )
 
 func InstallPackage(packageName string) error {

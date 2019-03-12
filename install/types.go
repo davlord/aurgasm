@@ -1,7 +1,7 @@
 package install
 
 import (
-	"davlord.com/aurgasm/common"
+	"github.com/davlord/aurgasm/common"
 )
 
 type PackageInstall struct {

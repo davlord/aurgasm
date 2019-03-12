@@ -6,7 +6,7 @@ import (
 	"sort"
 	"text/tabwriter"
 
-	"davlord.com/aurgasm/common"
+	"github.com/davlord/aurgasm/common"
 )
 
 func SearchPackage(searchTerm string) error {

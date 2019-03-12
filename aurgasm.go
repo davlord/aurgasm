@@ -4,8 +4,8 @@ import (
 	"flag"
 	"fmt"
 
-	"davlord.com/aurgasm/install"
-	"davlord.com/aurgasm/search"
+	"github.com/davlord/aurgasm/install"
+	"github.com/davlord/aurgasm/search"
 )
 
 var searchTerm string
