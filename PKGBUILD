@@ -6,7 +6,7 @@ pkgdesc="A simple ArchLinux AUR build tool"
 arch=('x86_64')
 url="https://github.com/davlord/aurgasm"
 license=('GPL')
-depends=('pacman','wget')
+depends=('pacman' 'wget')
 makedepends=('go')
 
 prepare() {
