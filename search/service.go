@@ -9,6 +9,16 @@ import (
 	u "github.com/davlord/aurgasm/util"
 )
 
+var colors u.Colors
+var wrapper wrap.Wrapper
+
+func init() {
+	colors = u.TerminalColors()
+
+	wrapper = wrap.NewWrapper()
+	wrapper.OutputLinePrefix = "    "
+}
+
 func SearchPackage(searchTerm string) error {
 	res := new(common.SearchResult)
 	err := aurAPISearchPackage(searchTerm, &res)
@@ -42,11 +52,8 @@ func printPackages(packages *[]common.Package) {
 
 	width, _ := u.TerminalWidth()
 
-	w := wrap.NewWrapper()
-	w.OutputLinePrefix = "    "
-
 	for _, pkg := range *packages {
-		fmt.Printf("aur/%s %s\n", pkg.Name, pkg.Version)
-		fmt.Printf("%s", w.Wrap(pkg.Description, width))
+		fmt.Printf("%saur/%s%s %s%s%s\n", colors.Repo, colors.Title, pkg.Name, colors.Version, pkg.Version, colors.NoColor)
+		fmt.Printf("%s", wrapper.Wrap(pkg.Description, width))
 	}
 }
