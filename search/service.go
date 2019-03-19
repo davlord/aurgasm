@@ -2,11 +2,11 @@ package search
 
 import (
 	"fmt"
-	"os"
 	"sort"
-	"text/tabwriter"
 
+	"github.com/bbrks/wrap"
 	"github.com/davlord/aurgasm/common"
+	u "github.com/davlord/aurgasm/util"
 )
 
 func SearchPackage(searchTerm string) error {
@@ -39,12 +39,14 @@ func sortPackagesByName(packages *[]common.Package) {
 }
 
 func printPackages(packages *[]common.Package) {
-	tw := new(tabwriter.Writer)
-	tw.Init(os.Stdout, 0, 8, 0, '\t', 0)
-	fmt.Fprintln(tw, "Name\tVersion\tDescription")
-	fmt.Fprintln(tw, "----\t-------\t-----------")
+
+	width, _ := u.TerminalWidth()
+
+	w := wrap.NewWrapper()
+	w.OutputLinePrefix = "    "
+
 	for _, pkg := range *packages {
-		fmt.Fprintf(tw, "%s\t%s\t%s\n", pkg.Name, pkg.Version, pkg.Description)
+		fmt.Printf("aur/%s %s\n", pkg.Name, pkg.Version)
+		fmt.Printf("%s", w.Wrap(pkg.Description, width))
 	}
-	tw.Flush()
 }
