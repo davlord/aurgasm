@@ -6,15 +6,14 @@ import (
 
 	"github.com/bbrks/wrap"
 	"github.com/davlord/aurgasm/common"
+	"github.com/davlord/aurgasm/conf"
 	u "github.com/davlord/aurgasm/util"
 )
 
-var colors u.Colors
+var Config *conf.Config
 var wrapper wrap.Wrapper
 
 func init() {
-	colors = u.TerminalColors()
-
 	wrapper = wrap.NewWrapper()
 	wrapper.OutputLinePrefix = "    "
 }
@@ -51,6 +50,7 @@ func sortPackagesByName(packages *[]common.Package) {
 func printPackages(packages *[]common.Package) {
 
 	width, _ := u.TerminalWidth()
+	colors := Config.TerminalColors()
 
 	for _, pkg := range *packages {
 		fmt.Printf("%saur/%s%s %s%s%s\n", colors.Repo, colors.Title, pkg.Name, colors.Version, pkg.Version, colors.NoColor)
