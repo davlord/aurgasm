@@ -14,6 +14,5 @@ aurgasm -S {thepackage}
 ```
 
 ## Supported pacman configuration
-Aurgasm support some of the `/etc/pacman.conf` options.
-### Colored output
-Uncomment `Color`
+Aurgasm support some of the `/etc/pacman.conf` options :
+* Color
