@@ -13,7 +13,7 @@ aurgasm -Ss {keyword}
 aurgasm -S {thepackage}
 ```
 
-## Supported configuration
+## Supported pacman configuration
 Aurgasm support some of the `/etc/pacman.conf` options.
 ### Colored output
 Uncomment `Color`
