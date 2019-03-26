@@ -17,12 +17,12 @@ type SearchResult struct {
 }
 
 type Package struct {
-	Name        string
-	PackageBase string
-	Version     string
-	Description string
-	URLPath     string
-	Installed   bool
+	Name             string
+	PackageBase      string
+	Version          string
+	Description      string
+	URLPath          string
+	InstalledVersion string
 }
 
 func GetJson(url string, searchResult interface{}) error {

@@ -52,30 +52,32 @@ func sortPackagesByName(packages []*common.Package) {
 }
 
 func printPackages(packages []*common.Package) {
-
 	width, _ := u.TerminalWidth()
 	colors := Config.TerminalColors()
 
 	for _, pkg := range packages {
 		fmt.Printf("%saur/%s%s %s%s%s", colors.Repo, colors.Title, pkg.Name, colors.Version, pkg.Version, colors.NoColor)
-		if pkg.Installed {
-			fmt.Printf(" %s[%s]%s", colors.Meta, "installed", colors.NoColor)
+		if len(pkg.InstalledVersion) > 0 {
+			availableVersion := ""
+			if pkg.Version != pkg.InstalledVersion {
+				availableVersion = fmt.Sprintf(": %s", pkg.InstalledVersion)
+			}
+			fmt.Printf(" %s[%s%s]%s", colors.Meta, "installed", availableVersion, colors.NoColor)
 		}
 
 		fmt.Printf("\n%s", wrapper.Wrap(pkg.Description, width))
 	}
 }
 
-func markInstalled(packages []*common.Package) error {
+func markInstalled(availablePackages []*common.Package) error {
 	installedPackages, err := installedPackages()
 	if err != nil {
 		return err
 	}
 
-	for _, pkg := range packages {
-		_, ok := installedPackages[pkg.Name]
-		fmt.Printf("%v\n", ok)
-		pkg.Installed = ok
+	for _, availablePackage := range availablePackages {
+		installedPackage, _ := installedPackages[availablePackage.Name]
+		availablePackage.InstalledVersion = installedPackage.Version
 	}
 
 	return nil
