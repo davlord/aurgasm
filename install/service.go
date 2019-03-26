@@ -19,7 +19,7 @@ func InstallPackage(packageName string) error {
 	if len(res.Results) < 1 {
 		return errors.New("package not found")
 	}
-	pkgInstall.Package = res.Results[0]
+	pkgInstall.Package = *res.Results[0]
 
 	buildSteps := []BuildStep{
 		createBuildDirectory,

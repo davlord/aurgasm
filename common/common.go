@@ -6,22 +6,23 @@ import (
 )
 
 const (
-	AurHost			 = "https://aur.archlinux.org"
-	AurAPIBase       = AurHost+"/rpc/?v=5"
+	AurHost          = "https://aur.archlinux.org"
+	AurAPIBase       = AurHost + "/rpc/?v=5"
 	AurAPISearchPath = "?v=5&type=search&arg="
 	AurAPIInfoPath   = "?v=5&type=info&arg[]="
 )
 
 type SearchResult struct {
-	Results []Package
+	Results []*Package
 }
 
 type Package struct {
 	Name        string
-	PackageBase	string
+	PackageBase string
 	Version     string
 	Description string
-	URLPath 	string
+	URLPath     string
+	Installed   bool
 }
 
 func GetJson(url string, searchResult interface{}) error {

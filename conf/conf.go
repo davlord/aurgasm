@@ -34,6 +34,7 @@ func buildColors(colorsEnabled bool) Colors {
 			Title:   bold,
 			Repo:    boldMagenta,
 			Version: boldGreen,
+			Meta:    boldCyan,
 			NoColor: noColor,
 		}
 	} else {
@@ -41,6 +42,7 @@ func buildColors(colorsEnabled bool) Colors {
 			Title:   "",
 			Repo:    "",
 			Version: "",
+			Meta:    "",
 			NoColor: "",
 		}
 

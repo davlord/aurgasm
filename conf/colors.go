@@ -26,4 +26,5 @@ type Colors struct {
 	Repo    string
 	Version string
 	NoColor string
+	Meta    string
 }
